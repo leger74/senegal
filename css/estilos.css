@@ -1,0 +1,279 @@
+/* ============================================================
+   ESTILOS BASE E IDENTIDAD SAGIS
+   ============================================================ */
+:root {
+    --terracota: #C84B31;
+    --indigo-opaco: rgba(26, 55, 77, 0.9);
+    --blanco-tarjeta: rgba(255, 255, 255, 0.95);
+    --dorado-arena: #D9B382;
+    --verde-exito: #2D5A27;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    /* Fondo inmersivo para Senegal */
+    background-image: url('../imagenes/canoa-rio.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* ============================================================
+   HEADER Y PRESENTACIÓN (EVITAR CHOQUE)
+   ============================================================ */
+.header-aventura {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: rgba(0,0,0,0.1);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.logo1 {
+    width: 70px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 2rem;
+}
+
+.contenedor-presentacion {
+    background: var(--indigo-opaco);
+    padding: 2.5rem;
+    color: white;
+    max-width: 850px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+}
+
+.titulo-principal {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    margin-bottom: 0.5rem;
+}
+
+.divisor-decorativo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 1.5rem 0;
+}
+
+.linea { height: 1px; width: 60px; background: var(--dorado-arena); }
+.punto { height: 6px; width: 6px; background: var(--dorado-arena); transform: rotate(45deg); }
+
+.cuerpo-texto p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* ============================================================
+   BLOQUES DE DESTINO + EFECTO ZOOM
+   ============================================================ */
+.bloque-destino {
+    padding: 5rem 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.contenido-destino {
+    background: var(--indigo-opaco);
+    color: white;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden; /* Vital para que la foto no se salga al crecer */
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    padding: 20px;
+}
+
+.contenido-destino img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    /* EFECTO DE ESCALA SUAVE */
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+/* Al pasar el cursor sobre la tarjeta, la imagen aumenta */
+.contenido-destino:hover img {
+    transform: scale(1.1);
+}
+
+.contenido-destino h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.3rem;
+    margin: 2rem 1rem 1rem;
+    color: var(--dorado-arena);
+}
+
+.contenido-destino p {
+    padding: 0 2rem 3rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   LOGÍSTICA E ITINERARIO
+   ============================================================ */
+.seccion-logistica {
+    background: transparent;
+    padding: 6rem 5%;
+}
+
+.itinerario-header {
+    text-align: center;
+    background: var(--indigo-opaco);
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto 3.5rem;
+    border-radius: 10px;
+    color: white;
+}
+
+.grid-itinerario {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tarjeta-logistica {
+    background: var(--blanco-tarjeta);
+    padding: 2rem;
+    border-radius: 12px;
+    border-top: 6px solid var(--terracota);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.tarjeta-logistica h3 {
+    color: #1A374D;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.tarjeta-logistica ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tarjeta-logistica li {
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+}
+
+.destacado-verde { border-top-color: var(--verde-exito); }
+.destacado-rojo { border-top-color: var(--terracota); }
+
+.btn-reserva {
+    display: block;
+    background: var(--terracota);
+    color: white;
+    padding: 1rem;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background 0.3s;
+}
+
+.btn-reserva:hover { background: var(--indigo-opaco); }
+
+.footer-simple {
+    background: rgba(0,0,0,0.8);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* ============================================================
+   RESPONSIVE (SOLUCIÓN A ESPACIOS Y CHOQUES)
+   ============================================================ */
+@media (max-width: 768px) {
+    
+    /* 1. Solución al choque: El header deja de ser rígido */
+    .header-aventura {
+        height: auto; /* Permite que el contenedor crezca con el texto */
+        min-height: 100vh;
+        padding: 80px 20px 60px; /* Mucho aire arriba y abajo */
+    }
+
+    .contenedor-presentacion {
+        width: 100%;
+        padding: 1.5rem 1rem;
+    }
+
+    /* 2. Solución a espacios en blanco: Alineación limpia */
+    .cuerpo-texto p, 
+    .contenido-destino p {
+        text-align: left; /* Evita los huecos gigantes (ríos) en móvil */
+        font-size: 0.95rem;
+        line-height: 1.5;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+        margin-top: 0;
+    }
+
+    /* 3. Evitar que el primer bloque toque el header */
+    .bloque-destino {
+        padding: 3rem 1rem;
+        margin-top: 10px;
+    }
+
+    .contenido-destino img {
+        height: 250px; /* Imagen más compacta para priorizar lectura */
+    }
+
+    .contenido-destino h2 {
+        font-size: 1.6rem;
+        margin: 1.5rem 1rem 0.5rem;
+        line-height: 1.2;
+    }
+
+    /* Ajustes logística móvil */
+    .seccion-logistica { padding: 4rem 1rem; }
+    .itinerario-header { margin-bottom: 2rem; }
+}
+
+
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
